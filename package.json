@@ -1,5 +1,5 @@
 {
-  "name": "xx",
+	"name": "xx",
 	"displayName": "XX",
 	"description": "An extestion for managing extensions",
 	"version": "0.0.1",
@@ -10,17 +10,19 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:xx.helloWorld"
+		"onCommand:xx.test"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "xx.helloWorld",
-				"title": "Hello World"
+				"command": "xx.test",
+				"title": "XX: test",
+				"shortTitle": "test"
 			}
 		]
 	},
+	"license": "SEE LICENSE IN LICENSE",
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
