@@ -1,8 +1,8 @@
 {
 	"name": "xx",
-	"displayName": "XX",
+	"displayName": "ExEx",
 	"description": "An extestion for managing extensions",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.63.0"
 	},
@@ -17,7 +17,7 @@
 		"commands": [
 			{
 				"command": "xx.test",
-				"title": "XX: test",
+				"title": "ExEx: test",
 				"shortTitle": "test"
 			}
 		]
