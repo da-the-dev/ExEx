@@ -1,7 +1,7 @@
 import * as vscode from 'vscode'
 import { resolve } from 'path'
-import Command from './core/interfaces/Command'
 import { readdirSync } from 'fs'
+import Command from './core/interfaces/Command'
 
 export async function activate(context: vscode.ExtensionContext) {
 	// Load all command paths
