@@ -6,15 +6,38 @@ The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
-- /
+
+## [0.1.2] - 31-12-2021
+
+### Fixed
+- Added necessary `await` here and there.
+- Updated `README.md` and `CHANGELOG.md`
+
+## [0.1.1] - 31-12-2021
+
+### Fixed
+- Fixed how extensions are fetched.
+- Small fixes here and there.
+
+## [0.1.0] - 31-12-2021
+
+### Added
+- Added an ability to create profiles.
+- Added an ablilty to enable 1 profile.
+- Added `storageService`, `profileService` and `extensionService`. They take care of their respective components.
+- Added all necessary interfaces.
+- Added comments,
+
+### Changed
+- Updated `.eslintrc.json`.
 
 ## [0.0.2] - 27-12-2021
 
 ### Added
-- Basic functionality
+- Basic functionality.
 
 ## [0.0.1] - 27-12-2021
-- initial release
+- initial release.
 
 <!-- Links -->
 [keep a changelog]: https://keepachangelog.com/en/1.0.0/
@@ -22,5 +45,8 @@ and this project adheres to [Semantic Versioning].
 
 <!-- Versions -->
 [unreleased]: https://github.com/da-the-dev/ExEx/compare/v0.0.2...HEAD
+[0.1.2]: https://github.com/da-the-dev/ExEx/compare/v0.1.1..v0.1.2
+[0.1.1]: https://github.com/da-the-dev/ExEx/compare/v0.1.0..v0.1.1
+[0.1.0]: https://github.com/da-the-dev/ExEx/compare/v0.0.2..v0.1.0
 [0.0.2]: https://github.com/da-the-dev/ExEx/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/da-the-dev/ExEx/releases/tag/v0.0.1

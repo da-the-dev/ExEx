@@ -11,7 +11,6 @@ export default class ExtensionService {
 
     /**
      * Fetches all installed extensions from `.vscode/extensions` folder
-     * !!!ONLY GUARANTEED TO WORK ON LINUX!!!
      */
     static fetchExtensions(ctx: vscode.ExtensionContext) {
         return vscode.extensions.all

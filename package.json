@@ -2,7 +2,7 @@
 	"name": "xx",
 	"displayName": "ExEx",
 	"description": "An extestion for managing extensions",
-	"version": "0.0.3",
+	"version": "0.1.2",
 	"engines": {
 		"vscode": "^1.63.0"
 	},

@@ -36,7 +36,7 @@ const cmd = {
 
         (await vscode.window.showQuickPick(['Enable', 'Skip'], {
             title: "Enable this profile?"
-        })) === 'Enable' ? ProfileService.enableProfile(profileName, ctx) : null
+        })) === 'Enable' ? await ProfileService.enableProfile(profileName, ctx) : null
     }
 } as Command
 export { cmd }
