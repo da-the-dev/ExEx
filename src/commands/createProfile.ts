@@ -1,10 +1,7 @@
-import { profile } from 'console'
-import { writeFileSync } from 'fs'
 import * as vscode from 'vscode'
 import Command from "../core/interfaces/Command"
 import ExtensionService from '../core/services/extensionService'
 import ProfileService from '../core/services/profileService'
-import StorageService from '../core/services/storageService'
 const cmd = {
     name: 'createProfile',
     foo: async ctx => {
@@ -18,7 +15,7 @@ const cmd = {
             return
         }
 
-        const extensions = await ExtensionService.fetchExtensions(ctx)
+        const extensions = ExtensionService.fetchExtensions(ctx)
         const selectedExtensions = await vscode.window.showQuickPick(extensions.map(e => e.name), {
             canPickMany: true,
             title: 'Select extensions you want in a profile',

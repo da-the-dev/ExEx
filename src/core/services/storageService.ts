@@ -95,8 +95,8 @@ export default class StorageService {
             filename: path,
             driver: sqlite3.Database
         })
-        const value = (await db.get('select value from ItemTable where key = ?', key)).value
-        return parse ? JSON.parse(value) : value
+        const rawValue = (await db.get('select value from ItemTable where key = ?', key))
+        return rawValue ? parse ? JSON.parse(rawValue.value) : rawValue.value : undefined
     }
 
     /**
@@ -105,7 +105,7 @@ export default class StorageService {
      * @param value Value to save
      * @param ctx Extension context
      */
-    static async setDeepWorkspaceKey<T>(key: string, value: T, ctx: vscode.ExtensionContext): Promise<void> {
+    static async setDeepWorkspaceKey(key: string, value: any, ctx: vscode.ExtensionContext): Promise<void> {
         const path = `${ctx.storageUri?.path.split(slash).slice(0, -1).join(slash).toString()}/state.vscdb`
         const db = await sqlite.open({
             filename: path,
