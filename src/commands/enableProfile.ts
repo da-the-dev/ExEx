@@ -22,7 +22,7 @@ const cmd = {
         }
 
         await ProfileService.enableProfile(selectedProfile, ctx)
-        vscode.commands.executeCommand('workbench.action.reloadWindow')
+        await vscode.commands.executeCommand('workbench.action.reloadWindow')
 
         // Need to rework to apply multiple profiles
 
