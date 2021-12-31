@@ -26,21 +26,32 @@ export default class ProfileService {
         await this.updateProfiles(profiles, ctx)
     }
 
-
     /**
      * Enables a profile
      * @param profileName Profile's name to enable
      * @param ctx Extension context
      */
     static async enableProfile(profileName: string, ctx: vscode.ExtensionContext) {
-        console.log(ctx.storageUri?.path)
         const profile = this.profile(profileName, ctx)
         if (!profile) throw new Error(`No profile "${profileName}" not found!`)
-        // const deepExtensions = [...(await StorageService.getDeepWorkspaceKey<DeepExtension[]>('extensionsIdentifiers/enabled', ctx))!,
-        // ...(await StorageService.getDeepWorkspaceKey<DeepExtension[]>('extensionsIdentifiers/disabled', ctx))!] as DeepExtension[]
 
         StorageService.setDeepWorkspaceKey('extensionsIdentifiers/enabled', profile.enabledExtensions.map(e => new Extension(e.name, e.id, e.uuid).toDeepExtension()), ctx)
         StorageService.setDeepWorkspaceKey('extensionsIdentifiers/disabled', profile.disabledExtensions.map(e => new Extension(e.name, e.id, e.uuid).toDeepExtension()), ctx)
         vscode.commands.executeCommand('workbench.action.reloadWindow')
+    }
+
+    /**
+     * Deletes a profile
+     * @param profileName Profile's name to enable
+     * @param ctx Extension context
+     */
+    static async deleteProfile(profileName: string, ctx: vscode.ExtensionContext) {
+        const profiles = this.profiles(ctx)
+
+        const profileIndex = profiles.findIndex(p => p.name === profileName)
+        if (profileIndex === -1) throw new Error(`No profile "${profileName}" not found!`)
+        profiles.splice(profileIndex, 1)
+
+        await this.updateProfiles(profiles, ctx)
     }
 }

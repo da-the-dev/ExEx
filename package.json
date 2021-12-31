@@ -11,7 +11,8 @@
 	],
 	"activationEvents": [
 		"onCommand:xx.createProfile",
-		"onCommand:xx.enableProfile"
+		"onCommand:xx.enableProfile",
+		"onCommand:xx.deleteProfile"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -25,6 +26,11 @@
 				"command": "xx.enableProfile",
 				"title": "ExEx: Enable Profile",
 				"shortTitle": "Enable Profile"
+			},
+			{
+				"command": "xx.deleteProfile",
+				"title": "ExEx: Delete Profile",
+				"shortTitle": "Delete Profile"
 			}
 		]
 	},
