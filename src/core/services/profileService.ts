@@ -2,6 +2,7 @@ import * as vscode from 'vscode'
 import { DeepExtension, Extension } from "../interfaces/Extension"
 import StorageService from "./storageService"
 import Profile from "../interfaces/Profile"
+import removeDuplicates from '../modules/duplicates'
 
 export default class ProfileService {
     constructor() { }
@@ -27,6 +28,18 @@ export default class ProfileService {
     }
 
     /**
+     * Simply sets enabled and disabled extensions in current workspace. 
+     * @param enabledExtensions 
+     * @param disabledExtensions 
+     * @param ctx 
+     */
+    static async setExtensions(enabledExtensions: Extension[], disabledExtensions: Extension[], ctx: vscode.ExtensionContext) {
+        await StorageService.setDeepWorkspaceKey('extensionsIdentifiers/enabled', enabledExtensions.map(e => new Extension(e.name, e.id, e.uuid).toDeepExtension()), ctx)
+        await StorageService.setDeepWorkspaceKey('extensionsIdentifiers/disabled', disabledExtensions.map(e => new Extension(e.name, e.id, e.uuid).toDeepExtension()), ctx)
+        await vscode.commands.executeCommand('workbench.action.reloadWindow')
+    }
+
+    /**
      * Enables a profile
      * @param profileName Profile's name to enable
      * @param ctx Extension context
@@ -35,9 +48,35 @@ export default class ProfileService {
         const profile = this.profile(profileName, ctx)
         if (!profile) throw new Error(`No profile "${profileName}" not found!`)
 
-        StorageService.setDeepWorkspaceKey('extensionsIdentifiers/enabled', profile.enabledExtensions.map(e => new Extension(e.name, e.id, e.uuid).toDeepExtension()), ctx)
-        StorageService.setDeepWorkspaceKey('extensionsIdentifiers/disabled', profile.disabledExtensions.map(e => new Extension(e.name, e.id, e.uuid).toDeepExtension()), ctx)
-        vscode.commands.executeCommand('workbench.action.reloadWindow')
+        await this.setExtensions(profile.enabledExtensions, profile.disabledExtensions, ctx)
+    }
+
+    /**
+     * Enables many profiles
+     * @param profileName Profile names to enable
+     * @param ctx Extension context
+     */
+    static async enableProfiles(profiles: Profile[], ctx: vscode.ExtensionContext) {
+        let totalEnabledX: Extension[] = []
+        let totalDisabledX: Extension[] = []
+
+        profiles.forEach(async p => {
+            totalEnabledX = totalEnabledX.concat(p.enabledExtensions)
+            totalDisabledX = totalDisabledX.concat(p.disabledExtensions)
+        })
+
+        totalEnabledX = removeDuplicates(totalEnabledX, 'name')
+        totalDisabledX = removeDuplicates(totalDisabledX, 'name')
+
+        totalDisabledX.filter(tdx => totalEnabledX.includes(tdx))
+
+        const superProfile: Profile = {
+            name: 'superProfile',
+            enabledExtensions: totalEnabledX,
+            disabledExtensions: totalDisabledX
+        }
+
+        await this.setExtensions(totalEnabledX, totalDisabledX, ctx)
     }
 
     /**

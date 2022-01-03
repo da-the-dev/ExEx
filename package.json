@@ -24,8 +24,8 @@
 			},
 			{
 				"command": "xx.enableProfile",
-				"title": "ExEx: Enable Profile",
-				"shortTitle": "Enable Profile"
+				"title": "ExEx: Enable Profiles",
+				"shortTitle": "Enable Profiles"
 			},
 			{
 				"command": "xx.deleteProfile",
