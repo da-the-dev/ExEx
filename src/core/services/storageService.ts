@@ -121,8 +121,8 @@ export default class StorageService {
      * @param key Key to retrieve 
      * @param ctx Extension context
      */
-    static getWorkspaceKey<T>(key: string, ctx: vscode.ExtensionContext, parse: true): T | undefined
-    static getWorkspaceKey(key: string, ctx: vscode.ExtensionContext, parse: false): string | undefined
+    static getWorkspaceKey<T>(key: string, ctx: vscode.ExtensionContext, parse?: true): T | undefined
+    static getWorkspaceKey(key: string, ctx: vscode.ExtensionContext, parse?: false): string | undefined
     static getWorkspaceKey(key: string, ctx: vscode.ExtensionContext, parse = true) {
         const value = ctx.workspaceState.get<string>(key)
         return value ? parse ? JSON.parse(value) : value : undefined

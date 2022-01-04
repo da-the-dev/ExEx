@@ -15,7 +15,7 @@ const cmd = {
             return
         }
 
-        const extensions = ExtensionService.fetchExtensions(ctx)
+        const extensions = await ExtensionService.fetchExtensions()
         const selectedExtensions = await vscode.window.showQuickPick(extensions.map(e => e.name), {
             canPickMany: true,
             title: 'Select extensions you want in a profile',

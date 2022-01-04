@@ -3,6 +3,7 @@ import { DeepExtension, Extension } from "../interfaces/Extension"
 import StorageService from "./storageService"
 import Profile from "../interfaces/Profile"
 import removeDuplicates from '../modules/duplicates'
+import ExtensionService from './extensionService'
 
 export default class ProfileService {
     constructor() { }
@@ -43,6 +44,7 @@ export default class ProfileService {
      * Enables a profile
      * @param profileName Profile's name to enable
      * @param ctx Extension context
+     * @deprecated This method is obsolete. Use {@link enableProfiles()}
      */
     static async enableProfile(profileName: string, ctx: vscode.ExtensionContext) {
         const profile = this.profile(profileName, ctx)
@@ -70,12 +72,17 @@ export default class ProfileService {
 
         totalDisabledX.filter(tdx => totalEnabledX.includes(tdx))
 
+        // If no profiles are selected, disable all extensions
+        if (totalDisabledX.length <= 0 && totalEnabledX.length <= 0)
+            totalDisabledX = await ExtensionService.fetchExtensions()
+
         const superProfile: Profile = {
             name: 'superProfile',
             enabledExtensions: totalEnabledX,
             disabledExtensions: totalDisabledX
         }
 
+        await StorageService.setWorkspaceKey('xx.enabledProfiles', profiles.map(p => p.name), ctx)
         await this.setExtensions(totalEnabledX, totalDisabledX, ctx)
     }
 
