@@ -15,8 +15,7 @@ This extension contributes the following settings:
 * `myExtension.thing`: set to `blah` to do something-->
 
 ## Known Issues
-
-1. Some extensions have broken UUIDs and there is no way to control their enablement.
+No known issues
 
 ## Release Notes
 
