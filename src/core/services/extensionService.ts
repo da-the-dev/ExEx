@@ -23,11 +23,10 @@ export default class ExtensionService {
 
                 return {
                     id: e.split('-').slice(0, -1).join('-'),
-                    name: json.displayName,
+                    name: /(%.*%)/gi.test(json.displayName) ? JSON.parse(readFileSync(`${baseDir}${slash}${e}${slash}package.nls.json`).toString())[json.displayName.slice(1, -1)] : json.displayName,
                     uuid: json.__metadata?.id
                 } as Extension
             })
-            .filter(e => !/(%.*%)/gi.test(e.name))                // Filter out %displayName% things
             .sort((a, b) => {                       // Sort in alphabetical order by name
                 return a.name > b.name ? 1 : -1
             })
