@@ -7,3 +7,5 @@
 5. Figure out a way to add correct UUIDs to unlisted extensions <span style="color:green">[done]</span>
 6. !!!ADD A WAY TO DELETE PROFILES **ASAP**!!! <span style="color:green">[done]</span>
 7. Have an ability to enable many profiles <span style="color:green">[done]</span>
+8. Add an ability to edit profiles <span style="color:green">[done]</span>
+9. Add descriptions for extensions <span style="color:yellow">[maybe]</span>

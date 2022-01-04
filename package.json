@@ -2,7 +2,7 @@
 	"name": "xx",
 	"displayName": "ExEx",
 	"description": "An extestion for managing extensions",
-	"version": "0.1.3",
+	"version": "0.2.0",
 	"engines": {
 		"vscode": "^1.63.0"
 	},
@@ -12,7 +12,8 @@
 	"activationEvents": [
 		"onCommand:xx.createProfile",
 		"onCommand:xx.enableProfile",
-		"onCommand:xx.deleteProfile"
+		"onCommand:xx.deleteProfile",
+		"onCommand:xx.editProfile"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -31,6 +32,11 @@
 				"command": "xx.deleteProfile",
 				"title": "ExEx: Delete Profile",
 				"shortTitle": "Delete Profile"
+			},
+			{
+				"command": "xx.editProfile",
+				"title": "ExEx: Edit Profile",
+				"shortTitle": "Edit Profile"
 			}
 		]
 	},

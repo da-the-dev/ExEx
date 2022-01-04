@@ -7,14 +7,19 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
+## [0.2.0] - 04-01-2022
+
+### Added
+- Added an ability to edit profiles.
+
 ## [0.1.3] - 04-01-2022
 
 ### Added
-- Added enabling many extensions at the same time .
+- Added enabling many extensions at the same time.
 - Added profile deletion.
 
 ### Deprecated
-- Depricated `ProfileService.enableProfile()`, because it is redundant.
+- Depricated `ProfileService.enableProfile()` because it is redundant.
 
 ### Fixed
 - Fixed extension fetching, now it works with all extensions *(hopefully)*.
@@ -57,7 +62,8 @@ and this project adheres to [Semantic Versioning].
 [semantic versioning]: https://semver.org/spec/v2.0.0.html
 
 <!-- Versions -->
-[unreleased]: https://github.com/da-the-dev/ExEx/compare/v0.1.3...HEAD
+[unreleased]: https://github.com/da-the-dev/ExEx/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/da-the-dev/ExEx/compare/v0.1.3..v0.2.0
 [0.1.3]: https://github.com/da-the-dev/ExEx/compare/v0.1.2..v0.1.3
 [0.1.2]: https://github.com/da-the-dev/ExEx/compare/v0.1.1..v0.1.2
 [0.1.1]: https://github.com/da-the-dev/ExEx/compare/v0.1.0..v0.1.1

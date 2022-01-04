@@ -5,12 +5,12 @@ import ProfileService from '../core/services/profileService'
 const cmd = {
     name: 'createProfile',
     foo: async ctx => {
-        const profileName = await vscode.window.showInputBox({
+        const profile = await vscode.window.showInputBox({
             title: 'Enter the profile\'s name',
             placeHolder: 'Very cool profile XD',
             ignoreFocusOut: true
         })
-        if (!profileName) {
+        if (!profile) {
             vscode.window.showErrorMessage('No profile name was defined!')
             return
         }
@@ -30,13 +30,13 @@ const cmd = {
         const enabledExtensions = extensions.filter(e => selectedExtensions.includes(e.name))
         const disabledExtensions = extensions.filter(e => !selectedExtensions.includes(e.name))
 
-        await ProfileService.createProfile(profileName, enabledExtensions, disabledExtensions, ctx)
+        await ProfileService.createProfile(profile, enabledExtensions, disabledExtensions, ctx)
 
-        await vscode.window.showInformationMessage(`Succesfully created "${profileName}"!`);
+        await vscode.window.showInformationMessage(`Succesfully created "${profile}"!`);
 
         (await vscode.window.showQuickPick(['Enable', 'Skip'], {
             title: "Enable this profile?"
-        })) === 'Enable' ? await ProfileService.enableProfile(profileName, ctx) : null
+        })) === 'Enable' ? await ProfileService.enableProfile(profile, ctx) : null
     }
 } as Command
 export { cmd }
