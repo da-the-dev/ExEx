@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
+## [1.0.1] - 05-01-2022
+
+### Fixed
+- Fixed README.md
+- Fixed icon
+
+## [1.0.0] - 05-01-2022
+
+### Added
+- Added nessesary changes for release on VSCode Marketplace
+
+### Fixed
+- Small bug fixes
+
 ## [0.2.0] - 04-01-2022
 
 ### Added
