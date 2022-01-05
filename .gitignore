@@ -6,3 +6,4 @@ node_modules
 *.swp
 extensionHunt/
 TODO.md
+.env
