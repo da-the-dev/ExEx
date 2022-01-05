@@ -2,6 +2,7 @@
 	"name": "xx",
 	"displayName": "ExEx",
 	"description": "An extestion for managing extensions",
+	"icon": "assets/images/icon.png",
 	"version": "0.2.0",
 	"engines": {
 		"vscode": "^1.63.0"

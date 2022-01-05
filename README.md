@@ -1,18 +1,11 @@
-# ExEx
+# ExEx (Beta version)
 An extestion for managing extensions.
 
 ## Features
-
-<!-- ## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension 
-* `myExtension.thing`: set to `blah` to do something-->
+- Create profiles of extensions that you want enabled and disabled for your current workspace
+- Enable many profiles at a time
+- Edit profiles
+- Delete them
 
 ## Known Issues
 No known issues

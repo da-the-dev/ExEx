@@ -8,4 +8,6 @@
 6. !!!ADD A WAY TO DELETE PROFILES **ASAP**!!! <span style="color:green">[done]</span>
 7. Have an ability to enable many profiles <span style="color:green">[done]</span>
 8. Add an ability to edit profiles <span style="color:green">[done]</span>
-9. Add descriptions for extensions <span style="color:yellow">[maybe]</span>
+9. Add descriptions for extensions <span style="color:yellow">[maybe]</span>    
+10. Add an icon
+11. **Update [README](README.md) and *release***
