@@ -13,12 +13,18 @@ const cmd = {
         }
 
         const selectedProfile = await vscode.window.showQuickPick(profiles.map(p => p.name), {
-            title: 'Select a profile to delete'
+            title: 'Select a profile to delete',
+            placeHolder: 'Find a profile by name'
         })
         if (!selectedProfile) {
             vscode.window.showErrorMessage('No profile name was selected!')
             return
         }
+
+        const confirmDelete = await vscode.window.showQuickPick(["Yes", "Nah"], {
+            title: 'Are you sure you want to delete this profile?',
+            placeHolder: 'Confirm deletion'
+        })
 
         await ProfileService.deleteProfile(selectedProfile, ctx)
         await vscode.window.showInformationMessage(`Succesfully deleted "${selectedProfile}"!`)
