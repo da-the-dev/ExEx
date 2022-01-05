@@ -19,6 +19,20 @@
 		"onCommand:xx.editProfile",
 		"onCommand:xx.renameProfile"
 	],
+	"keywords": [
+		"extension",
+		"extensions",
+		"manager",
+		"manage",
+		"package",
+		"packages",
+		"profile",
+		"profiles",
+		"vscode",
+		"visual",
+		"studio",
+		"code"
+	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [

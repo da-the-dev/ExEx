@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning].
 - Updated README to include the profile renaming feature.
   
 ### Fixed
-- Fixed some variable names .
+- Fixed some variable names.
 
 
 ## [1.0.3] - 05-01-2022
