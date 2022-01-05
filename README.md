@@ -11,13 +11,13 @@ Table of Contents:
 
 ## Features
 - ### Create profiles of extensions that you want enabled and disabled for your current workspace
-![create](assets/demo/create.gif)
+![create](https://github.com/da-the-dev/ExEx/blob/master/assets/demo/create.gif?raw=true)
 - ### Enable many profiles at a time
-![enable-many](assets/demo/enable%20many.gif)
+![enable-many](https://github.com/da-the-dev/ExEx/blob/master/assets/demo/enable%20many.gif?raw=true)
 - ### Edit profiles
-![edit](assets/demo/edit.gif)
+![edit](https://github.com/da-the-dev/ExEx/blob/master/assets/demo/edit.gif?raw=true)
 - ### Delete them
-![delete](assets/demo/delete.gif)
+![delete](https://github.com/da-the-dev/ExEx/blob/master/assets/demo/delete.gif?raw=true)
 
 ## Commands
 - `xx.createProfile` - Create a profile.
