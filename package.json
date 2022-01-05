@@ -3,7 +3,7 @@
 	"displayName": "ExEx",
 	"description": "An extestion for managing extensions",
 	"repository": "https://github.com/da-the-dev/ExEx",
-	"icon": "assets/images/icon.png",
+	"icon": "https://github.com/da-the-dev/ExEx/blob/master/assets/images/icon.png?raw=true",
 	"publisher": "sv-cheats-1",
 	"version": "1.1.0",
 	"engines": {
