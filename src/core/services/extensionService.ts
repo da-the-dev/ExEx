@@ -9,10 +9,8 @@ import { Extension, DeepExtension, WeakExtension } from "../interfaces/Extension
 export default class ExtensionService {
     constructor() { }
 
-
     /**
      * Fetches all installed extensions from `.vscode/extensions` folder
-     * !!!ONLY GUARANTEED TO WORK ON LINUX!!!
      */
     static async fetchExtensions(): Promise<Extension[]> {
         const baseDir = `${homedir()}${slash}.vscode${slash}extensions`

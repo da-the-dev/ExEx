@@ -11,6 +11,10 @@ export default class StorageService {
         switch (process.platform) {
             case 'linux':
                 return slasher(`${homedir()}/.config/Code/`)
+            case 'win32':
+                return slasher(`${homedir()}/AppData/Roaming/Code/`)
+            case 'darwin':
+                return slasher(`/Library/Application Support/Code/`)
         }
         return ''
     }

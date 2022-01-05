@@ -30,13 +30,13 @@ const cmd = {
         const enabledExtensions = extensions.filter(e => selectedExtensions.includes(e.name))
         const disabledExtensions = extensions.filter(e => !selectedExtensions.includes(e.name))
 
-        await ProfileService.createProfile(profile, enabledExtensions, disabledExtensions, ctx)
-
-        await vscode.window.showInformationMessage(`Succesfully created "${profile}"!`);
+        await ProfileService.createProfile(profile, enabledExtensions, disabledExtensions, ctx);
 
         (await vscode.window.showQuickPick(['Enable', 'Skip'], {
             title: "Enable this profile?"
-        })) === 'Enable' ? await ProfileService.enableProfile(profile, ctx) : null
+        })) === 'Enable' ? await ProfileService.enableProfiles([ProfileService.profile(profile, ctx)!], ctx) : null
+
+        await vscode.window.showInformationMessage(`Succesfully created "${profile}"!`)
     }
 } as Command
 export { cmd }
