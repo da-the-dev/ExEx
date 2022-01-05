@@ -34,7 +34,8 @@ Theese are some of my ideas for the future:
 - Merge profiles
 - Syncing with settings
 - Import/export a profile
-- Auto-update profiles when changes are made
+- Auto-update profiles when changes are made     
+  
 If you want, feel free to open a pull request if you want to contribute.
 
 ## Release Notes

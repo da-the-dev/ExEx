@@ -5,7 +5,7 @@
 	"repository": "https://github.com/da-the-dev/ExEx",
 	"icon": "assets/images/icon.png",
 	"publisher": "sv-cheats-1",
-	"version": "1.0.3",
+	"version": "1.1.0",
 	"engines": {
 		"vscode": "^1.63.0"
 	},
@@ -16,7 +16,8 @@
 		"onCommand:xx.createProfile",
 		"onCommand:xx.enableProfile",
 		"onCommand:xx.deleteProfile",
-		"onCommand:xx.editProfile"
+		"onCommand:xx.editProfile",
+		"onCommand:xx.renameProfile"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -40,6 +41,11 @@
 				"command": "xx.editProfile",
 				"title": "ExEx: Edit Profile",
 				"shortTitle": "Edit Profile"
+			},
+			{
+				"command": "xx.renameProfile",
+				"title": "ExEx: Rename Profile",
+				"shortTitle": "Rename Profile"
 			}
 		]
 	},

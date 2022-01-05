@@ -7,19 +7,41 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
+## [1.1.0] - 05-01-2022
+
+### Added
+- Added an ability to rename profiles.
+
+### Updated
+- Updated README to include the profile renaming feature.
+  
+### Fixed
+- Fixed some variable names .
+
+
+## [1.0.3] - 05-01-2022
+
+### Fixed
+- Fixed package.json (final).
+  
+## [1.0.2] - 05-01-2022
+
+### Fixed
+- Fixed package.json.
+
 ## [1.0.1] - 05-01-2022
 
 ### Fixed
-- Fixed README.md
-- Fixed icon
+- Fixed README.md.
+- Fixed icon.
 
 ## [1.0.0] - 05-01-2022
 
 ### Added
-- Added nessesary changes for release on VSCode Marketplace
+- Added nessesary changes for release on VSCode Marketplace.
 
 ### Fixed
-- Small bug fixes
+- Small bug fixes.
 
 ## [0.2.0] - 04-01-2022
 
@@ -77,6 +99,11 @@ and this project adheres to [Semantic Versioning].
 
 <!-- Versions -->
 [unreleased]: https://github.com/da-the-dev/ExEx/compare/v0.2.0...HEAD
+[1.1.0]: https://github.com/da-the-dev/ExEx/compare/v1.0.3..v1.1.0
+[1.0.3]: https://github.com/da-the-dev/ExEx/compare/v1.0.2..v1.0.3
+[1.0.2]: https://github.com/da-the-dev/ExEx/compare/v1.0.1..v1.0.2
+[1.0.1]: https://github.com/da-the-dev/ExEx/compare/v1.0.0..v1.0.1
+[1.0.0]: https://github.com/da-the-dev/ExEx/compare/v0.2.0..v1.0.0
 [0.2.0]: https://github.com/da-the-dev/ExEx/compare/v0.1.3..v0.2.0
 [0.1.3]: https://github.com/da-the-dev/ExEx/compare/v0.1.2..v0.1.3
 [0.1.2]: https://github.com/da-the-dev/ExEx/compare/v0.1.1..v0.1.2
