@@ -32,7 +32,7 @@ const cmd = {
 
         const selectedProfilesQP = await vscode.window.showQuickPick(selectedProfiles, {
             title: 'Select profiles to enable',
-            placeHolder: 'Enter profile name to find',
+            placeHolder: 'Find a profile by name',
             canPickMany: true
         })
 

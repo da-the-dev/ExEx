@@ -14,7 +14,8 @@ const cmd = {
         }
 
         const selectedProfile = await vscode.window.showQuickPick(profiles.map(p => p.name), {
-            title: 'Select a profile to edit'
+            title: 'Select a profile to edit',
+            placeHolder: 'Find a profile by name'
         })
         if (!selectedProfile) {
             vscode.window.showErrorMessage('No profile was selected!')
@@ -40,7 +41,7 @@ const cmd = {
         const selectedExtensions = await vscode.window.showQuickPick(extensions, {
             canPickMany: true,
             title: 'Select extensions you want in a profile',
-            placeHolder: 'Find extensions by name here'
+            placeHolder: 'Find extensions by name'
         })
 
         if (!selectedExtensions) {

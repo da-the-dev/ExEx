@@ -19,7 +19,7 @@ const cmd = {
         const selectedExtensions = await vscode.window.showQuickPick(extensions.map(e => e.name), {
             canPickMany: true,
             title: 'Select extensions you want in a profile',
-            placeHolder: 'Find an extension here'
+            placeHolder: 'Find extensions by name'
         })
 
         if (!selectedExtensions) {
@@ -33,7 +33,8 @@ const cmd = {
         await ProfileService.createProfile(profile, enabledExtensions, disabledExtensions, ctx);
 
         (await vscode.window.showQuickPick(['Enable', 'Skip'], {
-            title: "Enable this profile?"
+            title: "Enable this profile?",
+            placeHolder: 'Confirm enablement'
         })) === 'Enable' ? await ProfileService.enableProfiles([ProfileService.profile(profile, ctx)!], ctx) : null
 
         await vscode.window.showInformationMessage(`Succesfully created "${profile}"!`)

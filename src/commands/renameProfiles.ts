@@ -12,7 +12,8 @@ const cmd = {
         }
 
         const profileName = await vscode.window.showQuickPick(profiles.map(p => p.name), {
-            title: 'Select a profile to rename'
+            title: 'Select a profile to rename',
+            placeHolder: 'Find a profile by name'
         })
         if (!profileName) {
             vscode.window.showErrorMessage('No profile was selected!')
