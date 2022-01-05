@@ -2,10 +2,10 @@
 	"name": "xx",
 	"displayName": "ExEx",
 	"description": "An extestion for managing extensions",
-	"repository": "https://github.com/da-the-dev/ExEx",
-	"icon": "https://github.com/da-the-dev/ExEx/blob/master/assets/images/icon.png?raw=true",
+	"repository": "https://github.com/da-the-dev/ExEx --baseContentUrl --baseImagesUrl",
+	"icon": "assets/images/icon.png",
 	"publisher": "sv-cheats-1",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"engines": {
 		"vscode": "^1.63.0"
 	},
