@@ -7,12 +7,18 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
+## [1.1.3] - 07-01-2022
+
+### Fixed
+- Fixed edit menu reloading after modifying a profile.
+- Fixed profile creation. Now users can't create 2 profiles with the same name.
+  
+
 ## [1.1.2] - 07-01-2022
 
 ### Changed
 - Edit menu now sorts the extensions comfortably.
 - Edit menu automatically re-enables profiles if modified profiles were enabled.
-
 
 ## [1.1.1] - 06-01-2022
 
@@ -35,17 +41,20 @@ and this project adheres to [Semantic Versioning].
 
 ### Fixed
 - Fixed package.json (final).
-  
+
+
 ## [1.0.2] - 05-01-2022
 
 ### Fixed
 - Fixed package.json.
+
 
 ## [1.0.1] - 05-01-2022
 
 ### Fixed
 - Fixed README.md.
 - Fixed icon.
+
 
 ## [1.0.0] - 05-01-2022
 
@@ -54,6 +63,7 @@ and this project adheres to [Semantic Versioning].
 
 ### Fixed
 - Small bug fixes.
+
 
 ## [0.2.0] - 04-01-2022
 
@@ -73,6 +83,7 @@ and this project adheres to [Semantic Versioning].
 - Fixed extension fetching, now it works with all extensions *(hopefully)*.
 - Small fixes and optimizations.
 
+
 ## [0.1.2] - 31-12-2021
 
 ### Fixed
@@ -84,6 +95,7 @@ and this project adheres to [Semantic Versioning].
 ### Fixed
 - Fixed how extensions are fetched.
 - Small fixes here and there.
+
 
 ## [0.1.0] - 31-12-2021
 
@@ -97,10 +109,12 @@ and this project adheres to [Semantic Versioning].
 ### Changed
 - Updated `.eslintrc.json`.
 
+
 ## [0.0.2] - 27-12-2021
 
 ### Added
 - Basic functionality.
+
 
 ## [0.0.1] - 27-12-2021
 - initial release.
@@ -110,7 +124,8 @@ and this project adheres to [Semantic Versioning].
 [semantic versioning]: https://semver.org/spec/v2.0.0.html
 
 <!-- Versions -->
-[unreleased]: https://github.com/da-the-dev/ExEx/compare/v1.1.2...HEAD
+[unreleased]: https://github.com/da-the-dev/ExEx/compare/v1.1.3...HEAD
+[1.1.3]: https://github.com/da-the-dev/ExEx/compare/v1.1.2..v1.1.3
 [1.1.2]: https://github.com/da-the-dev/ExEx/compare/v1.1.1..v1.1.2
 [1.1.1]: https://github.com/da-the-dev/ExEx/compare/v1.1.0..v1.1.1
 [1.1.0]: https://github.com/da-the-dev/ExEx/compare/v1.0.3..v1.1.0
