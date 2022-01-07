@@ -36,7 +36,7 @@ Table of Contents:
 - `xx.renameProfile` - Rename a profile.
 
 ## Known Issues
-No known issues
+- Some extensions might require reloading the window after the profiles have been applied to activate (like Pylance for example). If some extensions are shown as enabled, but don't work, try reloading the window.
 
 ## Future features
 Theese are some of my ideas for the future:
