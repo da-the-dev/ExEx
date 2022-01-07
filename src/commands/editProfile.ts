@@ -67,8 +67,13 @@ const cmd = {
         )
 
         // Auto-reload if edited profile is enabled
-        if (StorageService.getWorkspaceKey<string>('xx.enabledProfiles', ctx)?.includes(selectedProfileName))
+        const enabledProfiles = StorageService.getWorkspaceKey<string[]>('xx.enabledProfiles', ctx)
+        if (enabledProfiles && enabledProfiles.includes(selectedProfileName)) {
+            await ProfileService.enableProfiles(ProfileService.profiles(ctx).filter(p => enabledProfiles.find(ep => ep === p.name)), ctx)
             await vscode.commands.executeCommand('workbench.action.reloadWindow')
+        }
+
+
 
         await vscode.window.showInformationMessage(`Succesfully edited "${selectedProfileName}"!`)
     }
