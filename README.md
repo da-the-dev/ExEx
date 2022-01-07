@@ -40,7 +40,6 @@ No known issues
 
 ## Future features
 Theese are some of my ideas for the future:
-- Rename a profile
 - Merge profiles
 - Global profile and 'All' profile
 - Syncing with settings
