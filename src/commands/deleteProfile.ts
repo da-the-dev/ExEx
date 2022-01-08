@@ -1,6 +1,7 @@
 import * as vscode from 'vscode'
 import Command from "../core/interfaces/Command"
 import ProfileService from '../core/services/profileService'
+import StorageService from '../core/services/storageService'
 const cmd = {
     name: 'deleteProfile',
     foo: async ctx => {
@@ -27,11 +28,15 @@ const cmd = {
             placeHolder: 'Confirm deletion'
         })
 
-        if (selectedProfile && ProfileService.sortedProfiles(ctx).filter(p => p.enabled).find(e => e.name === selectedProfile)) {
-            await ProfileService.deleteProfile(selectedProfile, ctx)
+        await ProfileService.deleteProfile(selectedProfile, ctx)
+        if (selectedProfile && ProfileService.enabledProfiles(ctx).find(p => p.name === selectedProfile)) {
+            const enabledProfileNames = StorageService.getWorkspaceKey<string[]>('xx.enabledProfiles', ctx) || []
+            enabledProfileNames.splice(enabledProfileNames.indexOf(selectedProfile), 1)
+            await StorageService.setWorkspaceKey('xx.enabledProfiles', enabledProfileNames, ctx)
+            await ProfileService.enableProfiles(ProfileService.enabledProfiles(ctx), ctx)
+
             await vscode.commands.executeCommand('workbench.action.reloadWindow')
         } else {
-            await ProfileService.deleteProfile(selectedProfile, ctx)
             await vscode.window.showInformationMessage(`Succesfully deleted "${selectedProfile}"!`)
         }
 

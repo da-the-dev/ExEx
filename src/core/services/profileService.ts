@@ -8,16 +8,13 @@ import ExtensionService from './extensionService'
 export default class ProfileService {
     constructor() { }
 
-    static sortByName = (a: Profile, b: Profile) => {
-        if (a.name > b.name) return 1
-        if (a.name < b.name) return -1
-        return 0
-    }
-
-    static sortByEnabled = (a: Profile, b: Profile) => {
-        if (a.enabled && !b.enabled) return -1
-        if (!a.enabled && b.enabled) return 1
-        return 0
+    /**
+     * Returns only enabled profiles
+     * @param ctx Extension context
+     */
+    static enabledProfiles = (ctx: vscode.ExtensionContext) => {
+        const enabledProfileNames = StorageService.getWorkspaceKey<string[]>('xx.enabledProfiles', ctx) || []
+        return this.profiles(ctx).filter(p => enabledProfileNames.includes(p.name))
     }
 
     /**
@@ -31,8 +28,16 @@ export default class ProfileService {
     static sortedProfiles(ctx: vscode.ExtensionContext, mapToQPI?: true, sortByEnabled?: boolean, sortByName?: boolean): vscode.QuickPickItem[]
     static sortedProfiles(ctx: vscode.ExtensionContext, mapToQPI = false, sortByEnabled = false, sortByName = true) {
         let profiles = this.profiles(ctx)
-        profiles = sortByName ? profiles.sort((a, b) => this.sortByName(a, b)) : profiles
-        profiles = sortByEnabled ? profiles.sort((a, b) => this.sortByEnabled(a, b)) : profiles
+        profiles = sortByName ? profiles.sort((a, b) => {
+            if (a.name > b.name) return 1
+            if (a.name < b.name) return -1
+            return 0
+        }) : profiles
+        profiles = sortByEnabled ? profiles.sort((a, b) => {
+            if (a.enabled && !b.enabled) return -1
+            if (!a.enabled && b.enabled) return 1
+            return 0
+        }) : profiles
 
         return mapToQPI ? profiles
             .map(p => {
@@ -60,6 +65,7 @@ export default class ProfileService {
      * Creates and saves a new profile
      * @param name Name of the profile
      * @param extensions List of extensions
+     * @returns A new profile
      */
     static async createProfile(name: string, enabledExtensions: Extension[], disabledExtensions: Extension[], ctx: vscode.ExtensionContext) {
         const profiles = this.profiles(ctx)
@@ -70,6 +76,7 @@ export default class ProfileService {
         }
         profiles.push(newProfile)
         await this.updateProfiles(profiles, ctx)
+        return newProfile
     }
 
     /**
@@ -145,3 +152,4 @@ export default class ProfileService {
         await this.updateProfiles(profiles, ctx)
     }
 }
+

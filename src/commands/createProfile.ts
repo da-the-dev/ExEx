@@ -2,6 +2,7 @@ import * as vscode from 'vscode'
 import Command from "../core/interfaces/Command"
 import ExtensionService from '../core/services/extensionService'
 import ProfileService from '../core/services/profileService'
+import StorageService from '../core/services/storageService'
 const cmd = {
     name: 'createProfile',
     foo: async ctx => {
@@ -41,11 +42,16 @@ const cmd = {
 
         await ProfileService.createProfile(profileName, enabledExtensions, disabledExtensions, ctx);
 
-        (await vscode.window.showQuickPick(['Enable', 'Skip'], {
+        const shouldEnable = await vscode.window.showQuickPick(['Enable', 'Skip'], {
             title: "Enable this profile?",
             placeHolder: 'Confirm enablement'
-        })) === 'Enable' ? await ProfileService.enableProfiles([ProfileService.profile(profileName, ctx)!], ctx) : null
-
+        })
+        if (shouldEnable === 'Enable') {
+            const enabledProfileNames = StorageService.getWorkspaceKey<string[]>('xx.enabledProfiles', ctx) || []
+            enabledProfileNames.push(profileName)
+            await StorageService.setWorkspaceKey('xx.enabledProfiles', enabledProfileNames, ctx)
+            await ProfileService.enableProfiles(ProfileService.enabledProfiles(ctx), ctx)
+        }
         await vscode.window.showInformationMessage(`Succesfully created "${profileName}"!`)
     }
 } as Command
