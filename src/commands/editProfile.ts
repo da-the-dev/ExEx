@@ -13,7 +13,7 @@ const cmd = {
             return
         }
 
-        const selectedProfileName = await vscode.window.showQuickPick(profiles.map(p => p.name), {
+        const selectedProfileName = await vscode.window.showQuickPick(ProfileService.sortedProfiles(ctx).map(p => p.name), {
             title: 'Select a profile to edit',
             placeHolder: 'Find a profile by name'
         })
@@ -36,14 +36,16 @@ const cmd = {
                         picked: profile.enabledExtensions.find(x => x.name === e.name) ? true : false
                     } as vscode.QuickPickItem
                 })
-                .sort((a, b) => {               // Sort by name
+                .sort((a, b) => {                         // Sort by name
                     return a.label >= b.label ? 1 : -1
                 })
-                .sort((a, b) => {               // Sort by picked
+                .sort((a, b) => {                         // Sort by picked
                     if (a.picked && !b.picked) return -1
                     if (!a.picked && b.picked) return 1
                     return 0
                 })
+                .filter(e => e.label !== 'ExEx')        // Filter out ExEx extension (is added later)
+
 
 
 
@@ -61,7 +63,8 @@ const cmd = {
         await ProfileService.deleteProfile(selectedProfileName, ctx)
         await ProfileService.createProfile(
             selectedProfileName,
-            rawExtensions.filter(e => selectedExtensions.find(ex => e.name === ex.label)),
+            rawExtensions.filter(e => selectedExtensions.find(ex => e.name === ex.label))
+                .concat(rawExtensions.find(e => e.id === 'sv-cheats-1.xx')!),               // Add ExEx extension automatically 
             rawExtensions.filter(e => !selectedExtensions.find(ex => e.name === ex.label)),
             ctx
         )
@@ -72,8 +75,6 @@ const cmd = {
             await ProfileService.enableProfiles(ProfileService.profiles(ctx).filter(p => enabledProfiles.find(ep => ep === p.name)), ctx)
             await vscode.commands.executeCommand('workbench.action.reloadWindow')
         }
-
-
 
         await vscode.window.showInformationMessage(`Succesfully edited "${selectedProfileName}"!`)
     }

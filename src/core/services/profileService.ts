@@ -8,7 +8,51 @@ import ExtensionService from './extensionService'
 export default class ProfileService {
     constructor() { }
 
-    static profiles = (ctx: vscode.ExtensionContext): Profile[] => StorageService.getGlobalKey<Profile[]>('xx.profiles', ctx) || []
+    static sortByName = (a: Profile, b: Profile) => {
+        if (a.name > b.name) return 1
+        if (a.name < b.name) return -1
+        return 0
+    }
+
+    static sortByEnabled = (a: Profile, b: Profile) => {
+        if (a.enabled && !b.enabled) return -1
+        if (!a.enabled && b.enabled) return 1
+        return 0
+    }
+
+    /**
+     * Returns sorted profiles or sorted `QuickPickItem[]`
+     * @param ctx Extension context
+     * @param mapToQPI Maps result to `QuickPickItem[]`. ***False*** by default 
+     * @param sortByEnabled Sorts by "enabled". ***False*** by defalut
+     * @param sortByName Sorts by name. ***True*** by defalut
+     */
+    static sortedProfiles(ctx: vscode.ExtensionContext, mapToQPI?: false, sortByEnabled?: boolean, sortByName?: boolean): Profile[]
+    static sortedProfiles(ctx: vscode.ExtensionContext, mapToQPI?: true, sortByEnabled?: boolean, sortByName?: boolean): vscode.QuickPickItem[]
+    static sortedProfiles(ctx: vscode.ExtensionContext, mapToQPI = false, sortByEnabled = false, sortByName = true) {
+        let profiles = this.profiles(ctx)
+        profiles = sortByName ? profiles.sort((a, b) => this.sortByName(a, b)) : profiles
+        profiles = sortByEnabled ? profiles.sort((a, b) => this.sortByEnabled(a, b)) : profiles
+
+        return mapToQPI ? profiles
+            .map(p => {
+                return {
+                    label: p.name,
+                    picked: p.enabled
+                } as vscode.QuickPickItem
+            }) : profiles
+    }
+
+    static profiles = (ctx: vscode.ExtensionContext): Profile[] => {
+        const profiles = StorageService.getGlobalKey<Profile[]>('xx.profiles', ctx)
+        if (!profiles)
+            return []
+        const enabledProfiles = StorageService.getWorkspaceKey<string[]>('xx.enabledProfiles', ctx) || []
+        return profiles.map(p => {
+            p.enabled = enabledProfiles.find(ep => p.name == ep) ? true : false
+            return p
+        })
+    }
     static profile = (profileName: string, ctx: vscode.ExtensionContext): Profile | undefined => this.profiles(ctx).find(p => p.name === profileName)
     private static updateProfiles = async (profiles: Profile[], ctx: vscode.ExtensionContext) => await StorageService.setGlobalKey('xx.profiles', profiles, ctx)
 

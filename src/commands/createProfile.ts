@@ -23,7 +23,8 @@ const cmd = {
 
 
         const extensions = await ExtensionService.fetchExtensions()
-        const selectedExtensions = await vscode.window.showQuickPick(extensions.map(e => e.name), {
+        const selectedExtensions = await vscode.window.showQuickPick(extensions.map(e => e.name)
+            .filter(e => e !== 'ExEx'), {                  // Filter out ExEx extension (is added later)
             canPickMany: true,
             title: 'Select extensions you want in a profile',
             placeHolder: 'Find extensions by name'
@@ -35,6 +36,7 @@ const cmd = {
         }
 
         const enabledExtensions = extensions.filter(e => selectedExtensions.includes(e.name))
+            .concat(extensions.find(e => e.id === 'sv-cheats-1.xx')!)                           // Add ExEx extension automatically 
         const disabledExtensions = extensions.filter(e => !selectedExtensions.includes(e.name))
 
         await ProfileService.createProfile(profileName, enabledExtensions, disabledExtensions, ctx);
