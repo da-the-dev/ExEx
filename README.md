@@ -1,5 +1,8 @@
 # ExEx
-An extestion for managing extensions.
+<span><h4>An extestion for managing extensions.</h4></span>
+<hr>
+
+Have too many extensions? Want to organise all of them? Some may be even confilct with each other? <span style="font-size: 15pt; font-weight: bold;">ExEx</span>  was created exatly to solve these and many more problems. Now with this extestion installed you can separate you extensions into profiles and enable only those you need for a specific workspace.
 
 Table of Contents:
 - [ExEx](#exex)
@@ -27,6 +30,7 @@ Table of Contents:
 - Delete a profile
 - Edit a profile *(change extension list)*
 - Rename a profile
+- Duplicate a profile
 
 ## Commands
 - `xx.createProfile` - Create a profile.
@@ -34,6 +38,7 @@ Table of Contents:
 - `xx.deleteProfile` - Delete a profile.
 - `xx.editProfile` - Edit a profile *(chage what extension to enable/disable)*.
 - `xx.renameProfile` - Rename a profile.
+- `xx.duplcateProfile` - Duplicate a profile. Creates a new profile with the same extensions, but a different name. Usefull when a new profile should be created with extra extensions, but the old one must be preserved.
 
 ## Known Issues
 - Some extensions might require reloading the window after the profiles have been applied to activate (like Pylance for example). If some extensions are shown as enabled, but don't work, try reloading the window.
