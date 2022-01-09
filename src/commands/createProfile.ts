@@ -40,7 +40,7 @@ const cmd = {
             .concat(extensions.find(e => e.id === 'sv-cheats-1.xx')!)                           // Add ExEx extension automatically 
         const disabledExtensions = extensions.filter(e => !selectedExtensions.includes(e.name))
 
-        await ProfileService.createProfile(newProfileName, enabledExtensions, disabledExtensions, ctx);
+        await ProfileService.createProfile(newProfileName, enabledExtensions, disabledExtensions, ctx)
 
         const shouldEnable = await vscode.window.showQuickPick(['Enable', 'Skip'], {
             title: "Enable this profile?",

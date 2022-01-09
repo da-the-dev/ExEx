@@ -21,7 +21,7 @@ export default class ProfileService {
             return []
         const enabledProfiles = StorageService.getWorkspaceKey<string[]>('xx.enabledProfiles', ctx) || []
         return profiles.map(p => {
-            p.enabled = enabledProfiles.find(ep => p.name == ep) ? true : false
+            p.enabled = enabledProfiles.find(ep => p.name === ep) ? true : false
             return p
         })
     }

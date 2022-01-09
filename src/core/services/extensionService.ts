@@ -15,7 +15,7 @@ export default class ExtensionService {
     static async fetchExtensions(): Promise<Extension[]> {
         const baseDir = `${homedir()}${slash}.vscode${slash}extensions`
         return readdirSync(baseDir)
-            .filter(e => e !== '.obsolete')         // Filter out the '.obsolete' thing (maybe it's important, idk, idc)
+            .filter(e => e !== '.DS_Store' && e !== '.obsolete')     // Filter out .DS_Store and '.obsolete' thing (maybe it's important, idk, idc)
             .map(e => {                             // Map extensions from a folder
                 const json = JSON.parse(readFileSync(`${baseDir}${slash}${e}${slash}package.json`).toString())
 
