@@ -8,6 +8,36 @@ import ExtensionService from './extensionService'
 export default class ProfileService {
     constructor() { }
 
+    /*************************************************************************************/
+
+    /**
+     * All avalible profiles
+     * @param ctx Extension context
+     * @returns All profiles avalible
+     */
+    static profiles = (ctx: vscode.ExtensionContext): Profile[] => {
+        const profiles = StorageService.getGlobalKey<Profile[]>('xx.profiles', ctx)
+        if (!profiles)
+            return []
+        const enabledProfiles = StorageService.getWorkspaceKey<string[]>('xx.enabledProfiles', ctx) || []
+        return profiles.map(p => {
+            p.enabled = enabledProfiles.find(ep => p.name == ep) ? true : false
+            return p
+        })
+    }
+    /**
+     * Returns a profile with a specific name
+     * @param profileName Profile name to search for
+     * @param ctx Extension context
+     * @returns A profile with name `profileName`
+     */
+    static profile = (profileName: string, ctx: vscode.ExtensionContext): Profile | undefined => this.profiles(ctx).find(p => p.name === profileName)
+    /**
+     * Saves names of `profiles`
+     * @param profiles Profiles to save
+     * @param ctx Extension cotnext
+     */
+    private static updateProfiles = async (profiles: Profile[], ctx: vscode.ExtensionContext) => await StorageService.setGlobalKey('xx.profiles', profiles, ctx)
     /**
      * Returns only enabled profiles
      * @param ctx Extension context
@@ -16,7 +46,6 @@ export default class ProfileService {
         const enabledProfileNames = StorageService.getWorkspaceKey<string[]>('xx.enabledProfiles', ctx) || []
         return this.profiles(ctx).filter(p => enabledProfileNames.includes(p.name))
     }
-
     /**
      * Returns sorted profiles or sorted `QuickPickItem[]`
      * @param ctx Extension context
@@ -47,19 +76,20 @@ export default class ProfileService {
                 } as vscode.QuickPickItem
             }) : profiles
     }
-
-    static profiles = (ctx: vscode.ExtensionContext): Profile[] => {
-        const profiles = StorageService.getGlobalKey<Profile[]>('xx.profiles', ctx)
-        if (!profiles)
-            return []
-        const enabledProfiles = StorageService.getWorkspaceKey<string[]>('xx.enabledProfiles', ctx) || []
-        return profiles.map(p => {
-            p.enabled = enabledProfiles.find(ep => p.name == ep) ? true : false
-            return p
-        })
+    /**
+     * Simply sets enabled and disabled extensions in current workspace. 
+     * @param enabledExtensions 
+     * @param disabledExtensions 
+     * @param ctx 
+     */
+    static async setExtensions(enabledExtensions: Extension[], disabledExtensions: Extension[], ctx: vscode.ExtensionContext) {
+        await StorageService.setDeepWorkspaceKey('extensionsIdentifiers/enabled', enabledExtensions.map(e => new Extension(e.name, e.id, e.uuid).toDeepExtension()), ctx)
+        await StorageService.setDeepWorkspaceKey('extensionsIdentifiers/disabled', disabledExtensions.map(e => new Extension(e.name, e.id, e.uuid).toDeepExtension()), ctx)
+        await vscode.commands.executeCommand('workbench.action.reloadWindow')
     }
-    static profile = (profileName: string, ctx: vscode.ExtensionContext): Profile | undefined => this.profiles(ctx).find(p => p.name === profileName)
-    private static updateProfiles = async (profiles: Profile[], ctx: vscode.ExtensionContext) => await StorageService.setGlobalKey('xx.profiles', profiles, ctx)
+
+
+    /*************************************************************************************/
 
     /**
      * Creates and saves a new profile
@@ -78,19 +108,6 @@ export default class ProfileService {
         await this.updateProfiles(profiles, ctx)
         return newProfile
     }
-
-    /**
-     * Simply sets enabled and disabled extensions in current workspace. 
-     * @param enabledExtensions 
-     * @param disabledExtensions 
-     * @param ctx 
-     */
-    static async setExtensions(enabledExtensions: Extension[], disabledExtensions: Extension[], ctx: vscode.ExtensionContext) {
-        await StorageService.setDeepWorkspaceKey('extensionsIdentifiers/enabled', enabledExtensions.map(e => new Extension(e.name, e.id, e.uuid).toDeepExtension()), ctx)
-        await StorageService.setDeepWorkspaceKey('extensionsIdentifiers/disabled', disabledExtensions.map(e => new Extension(e.name, e.id, e.uuid).toDeepExtension()), ctx)
-        await vscode.commands.executeCommand('workbench.action.reloadWindow')
-    }
-
     /**
      * Enables a profile
      * @param profileName Profile's name to enable
@@ -103,7 +120,6 @@ export default class ProfileService {
 
         await this.setExtensions(profile.enabledExtensions, profile.disabledExtensions, ctx)
     }
-
     /**
      * Enables many profiles
      * @param profileName Profile names to enable
@@ -136,7 +152,6 @@ export default class ProfileService {
         await StorageService.setWorkspaceKey('xx.enabledProfiles', profiles.map(p => p.name), ctx)
         await this.setExtensions(totalEnabledX, totalDisabledX, ctx)
     }
-
     /**
      * Deletes a profile
      * @param profileName Profile's name to enable
