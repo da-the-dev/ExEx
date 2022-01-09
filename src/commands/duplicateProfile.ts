@@ -2,7 +2,6 @@ import * as vscode from 'vscode'
 import Command from "../core/interfaces/Command"
 import ProfileService from '../core/services/profileService'
 const cmd = {
-    name: 'duplicateProfile',
     foo: async ctx => {
         const profiles = ProfileService.profiles(ctx)
         if (profiles.length <= 0) {

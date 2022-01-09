@@ -4,7 +4,6 @@ import ExtensionService from '../core/services/extensionService'
 import ProfileService from '../core/services/profileService'
 import StorageService from '../core/services/storageService'
 const cmd = {
-    name: 'createProfile',
     foo: async ctx => {
         const newProfileName = (await vscode.window.showInputBox({
             title: 'Enter the profile\'s name',

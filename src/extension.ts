@@ -1,18 +1,16 @@
 import * as vscode from 'vscode'
-import { resolve } from 'path'
-import { readdirSync } from 'fs'
-import Command from './core/interfaces/Command'
 
 export async function activate(context: vscode.ExtensionContext) {
-	// Load all command paths
-	const commandPaths = readdirSync(resolve(__dirname, 'commands')).filter(cp => cp.endsWith('.js'))
-
-	// Register each command and assing a function to it
-	context.subscriptions.push(...commandPaths.map(cp => {
-		const cmd = require(resolve(__dirname, 'commands', cp)).cmd as Command
-		const subject = vscode.commands.registerCommand(`xx.${cmd.name}`, () => cmd.foo(context))
-		return subject
-	}))
+	// Register each command individually
+	context.subscriptions.push(
+		vscode.commands.registerCommand(`xx.createProfile`, async () => (await import('./commands/createProfile')).cmd.foo(context)),
+		vscode.commands.registerCommand(`xx.deleteProfile`, async () => (await import('./commands/deleteProfile')).cmd.foo(context)),
+		vscode.commands.registerCommand(`xx.duplicateProfile`, async () => (await import('./commands/duplicateProfile')).cmd.foo(context)),
+		vscode.commands.registerCommand(`xx.editProfile`, async () => (await import('./commands/editProfile')).cmd.foo(context)),
+		vscode.commands.registerCommand(`xx.enableProfile`, async () => (await import('./commands/enableProfile')).cmd.foo(context)),
+		vscode.commands.registerCommand(`xx.mergeProfile`, async () => (await import('./commands/mergeProfile')).cmd.foo(context)),
+		vscode.commands.registerCommand(`xx.renameProfiles`, async () => (await import('./commands/renameProfiles')).cmd.foo(context)),
+	)
 }
 
 export function deactivate() { }

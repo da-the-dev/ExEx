@@ -4,7 +4,6 @@ import Profile from '../core/interfaces/Profile'
 import ProfileService from '../core/services/profileService'
 import StorageService from '../core/services/storageService'
 const cmd = {
-    name: 'enableProfile',
     foo: async ctx => {
         const profiles = ProfileService.profiles(ctx)
 

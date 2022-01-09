@@ -7,7 +7,6 @@ import ExtensionService from '../core/services/extensionService'
 import ProfileService from '../core/services/profileService'
 import StorageService from '../core/services/storageService'
 const cmd = {
-    name: 'mergeProfile',
     foo: async ctx => {
         const profiles = ProfileService.profiles(ctx)
 
