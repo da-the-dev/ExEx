@@ -12,13 +12,13 @@ const cmd = {
             return
         }
 
-        const selectedProfile = await vscode.window.showQuickPick(
+        const deleteProfile = await vscode.window.showQuickPick(
             ProfileService.sortedProfiles(ctx).map(p => p.name), {
             title: 'Select a profile to delete',
             placeHolder: 'Find a profile by name'
         })
 
-        if (!selectedProfile) {
+        if (!deleteProfile) {
             vscode.window.showErrorMessage('No profile name was selected!')
             return
         }
@@ -28,18 +28,21 @@ const cmd = {
             placeHolder: 'Confirm deletion'
         })
 
-        await ProfileService.deleteProfile(selectedProfile, ctx)
-        if (selectedProfile && ProfileService.enabledProfiles(ctx).find(p => p.name === selectedProfile)) {
-            const enabledProfileNames = StorageService.getWorkspaceKey<string[]>('xx.enabledProfiles', ctx) || []
-            enabledProfileNames.splice(enabledProfileNames.indexOf(selectedProfile), 1)
-            await StorageService.setWorkspaceKey('xx.enabledProfiles', enabledProfileNames, ctx)
-            await ProfileService.enableProfiles(ProfileService.enabledProfiles(ctx), ctx)
+        if (confirmDelete === 'Yeah') {
+            await ProfileService.deleteProfile(deleteProfile, ctx)
+            if (deleteProfile && ProfileService.enabledProfiles(ctx).find(p => p.name === deleteProfile)) {
+                const enabledProfileNames = StorageService.getWorkspaceKey<string[]>('xx.enabledProfiles', ctx) || []
+                enabledProfileNames.splice(enabledProfileNames.indexOf(deleteProfile), 1)
+                await StorageService.setWorkspaceKey('xx.enabledProfiles', enabledProfileNames, ctx)
+                await ProfileService.enableProfiles(ProfileService.enabledProfiles(ctx), ctx)
 
-            await vscode.commands.executeCommand('workbench.action.reloadWindow')
+                await vscode.commands.executeCommand('workbench.action.reloadWindow')
+            } else {
+                await vscode.window.showInformationMessage(`Succesfully deleted "${deleteProfile}"!`)
+            }
         } else {
-            await vscode.window.showInformationMessage(`Succesfully deleted "${selectedProfile}"!`)
+            await vscode.window.showErrorMessage(`Aborted deletion of "${deleteProfile}"!`)
         }
-
     }
 } as Command
 export { cmd }

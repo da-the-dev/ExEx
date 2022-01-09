@@ -6,18 +6,18 @@ import StorageService from '../core/services/storageService'
 const cmd = {
     name: 'createProfile',
     foo: async ctx => {
-        const profileName = (await vscode.window.showInputBox({
+        const newProfileName = (await vscode.window.showInputBox({
             title: 'Enter the profile\'s name',
             placeHolder: 'Very cool profile XD',
             ignoreFocusOut: true
         }))?.trim()
 
-        if (!profileName) {
+        if (!newProfileName) {
             vscode.window.showErrorMessage('No profile name was defined!')
             return
         }
 
-        if (ProfileService.profile(profileName, ctx)) {
+        if (ProfileService.profile(newProfileName, ctx)) {
             vscode.window.showErrorMessage('Profile with this name already exists!')
             return
         }
@@ -40,7 +40,7 @@ const cmd = {
             .concat(extensions.find(e => e.id === 'sv-cheats-1.xx')!)                           // Add ExEx extension automatically 
         const disabledExtensions = extensions.filter(e => !selectedExtensions.includes(e.name))
 
-        await ProfileService.createProfile(profileName, enabledExtensions, disabledExtensions, ctx);
+        await ProfileService.createProfile(newProfileName, enabledExtensions, disabledExtensions, ctx);
 
         const shouldEnable = await vscode.window.showQuickPick(['Enable', 'Skip'], {
             title: "Enable this profile?",
@@ -48,11 +48,11 @@ const cmd = {
         })
         if (shouldEnable === 'Enable') {
             const enabledProfileNames = StorageService.getWorkspaceKey<string[]>('xx.enabledProfiles', ctx) || []
-            enabledProfileNames.push(profileName)
+            enabledProfileNames.push(newProfileName)
             await StorageService.setWorkspaceKey('xx.enabledProfiles', enabledProfileNames, ctx)
             await ProfileService.enableProfiles(ProfileService.enabledProfiles(ctx), ctx)
         }
-        await vscode.window.showInformationMessage(`Succesfully created "${profileName}"!`)
+        await vscode.window.showInformationMessage(`Succesfully created "${newProfileName}"!`)
     }
 } as Command
 export { cmd }

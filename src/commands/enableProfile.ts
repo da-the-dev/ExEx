@@ -14,19 +14,18 @@ const cmd = {
             enabledProfiles = profiles.filter(p => prevEnabledProfiles.includes(p.name))
 
 
-        const selectedProfiles = await vscode.window.showQuickPick(ProfileService.sortedProfiles(ctx, true, true), {
+        const enableProfiles = await vscode.window.showQuickPick(ProfileService.sortedProfiles(ctx, true, true), {
             title: 'Select profiles to enable',
             placeHolder: 'Find a profile by name',
             canPickMany: true
         })
 
-        if (!selectedProfiles) {
+        if (!enableProfiles) {
             vscode.window.showErrorMessage('No new profile was selected!')
             return
         }
 
-        const pickedProfiles = profiles.filter(p => selectedProfiles.find(sp => sp.label === p.name))
-        await ProfileService.enableProfiles(pickedProfiles, ctx)
+        await ProfileService.enableProfiles(profiles.filter(p => enableProfiles.find(sp => sp.label === p.name)), ctx)
         await vscode.window.showInformationMessage('Profiles enabled!')
     }
 } as Command

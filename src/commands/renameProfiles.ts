@@ -11,24 +11,24 @@ const cmd = {
             return
         }
 
-        const profileName = await vscode.window.showQuickPick(profiles.map(p => p.name), {
+        const oldProfileName = await vscode.window.showQuickPick(profiles.map(p => p.name), {
             title: 'Select a profile to rename',
             placeHolder: 'Find a profile by name'
         })
-        if (!profileName) {
+        if (!oldProfileName) {
             vscode.window.showErrorMessage('No profile was selected!')
             return
         }
 
-        const profile = profiles.find(p => p.name === profileName)
+        const profile = profiles.find(p => p.name === oldProfileName)
         if (!profile) {
-            vscode.window.showErrorMessage(`No profile with name ${profileName} was found!`)
+            vscode.window.showErrorMessage(`No profile with name ${oldProfileName} was found!`)
             return
         }
 
         const newProfileName = await vscode.window.showInputBox({
             title: "Select a new name for the profile",
-            placeHolder: `Prev. name: ${profileName}`
+            placeHolder: `Prev. name: ${oldProfileName}`
         })
         if (!newProfileName) {
             vscode.window.showErrorMessage(`No new profile name was found!`)
@@ -36,7 +36,7 @@ const cmd = {
         }
 
         profile.name = newProfileName
-        await ProfileService.deleteProfile(profileName, ctx)
+        await ProfileService.deleteProfile(oldProfileName, ctx)
         await ProfileService.createProfile(
             newProfileName,
             profile.enabledExtensions,
@@ -45,7 +45,7 @@ const cmd = {
         )
 
         await vscode.window.showInformationMessage(
-            `Succesfully renamed "${profileName}" to ${newProfileName}!`
+            `Succesfully renamed "${oldProfileName}" to ${newProfileName}!`
         )
     }
 } as Command
