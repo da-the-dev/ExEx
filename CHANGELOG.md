@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
+## [1.3.1] - 09-01-2022
+
+### Fixed
+- Fixed README.md dupe command name typo
+
 ## [1.3.0] - 09-01-2022
 
 ### Added
@@ -147,7 +152,8 @@ and this project adheres to [Semantic Versioning].
 [semantic versioning]: https://semver.org/spec/v2.0.0.html
 
 <!-- Versions -->
-[unreleased]: https://github.com/da-the-dev/ExEx/compare/v1.3.0...HEAD
+[unreleased]: https://github.com/da-the-dev/ExEx/compare/v1.3.1...HEAD
+[1.3.1]: https://github.com/da-the-dev/ExEx/compare/v1.3.0..v1.3.1
 [1.3.0]: https://github.com/da-the-dev/ExEx/compare/v1.2.0..v1.3.0
 [1.2.0]: https://github.com/da-the-dev/ExEx/compare/v1.1.4..v1.2.0
 [1.1.4]: https://github.com/da-the-dev/ExEx/compare/v1.1.3..v1.1.4

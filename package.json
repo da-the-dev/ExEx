@@ -5,7 +5,7 @@
 	"repository": "https://github.com/da-the-dev/ExEx",
 	"icon": "assets/images/icon.png",
 	"publisher": "sv-cheats-1",
-	"version": "1.3.0",
+	"version": "1.3.1",
 	"engines": {
 		"vscode": "^1.63.0"
 	},

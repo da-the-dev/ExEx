@@ -40,7 +40,7 @@ Table of Contents:
 - `xx.deleteProfile` - Delete a profile.
 - `xx.editProfile` - Edit a profile *(chage what extension to enable/disable)*.
 - `xx.renameProfile` - Rename a profile.
-- `xx.duplcateProfile` - Duplicate a profile.
+- `xx.duplicateProfile` - Duplicate a profile.
 - `xx.mergeProfile` - Merge profiles.
 
 ## Known Issues
