@@ -2,7 +2,6 @@ import * as vscode from 'vscode'
 import Command from "../core/interfaces/Command"
 import ExtensionService from '../core/services/extensionService'
 import ProfileService from '../core/services/profileService'
-import StorageService from '../core/services/storageService'
 const cmd = {
     name: 'editProfile',
     foo: async ctx => {
