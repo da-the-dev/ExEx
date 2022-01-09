@@ -7,15 +7,23 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
+## [1.3.3] - 09-01-2022
+
+### Added
+- Added missing x64 binaries for sqlite3
+
+
 ## [1.3.2] - 09-01-2022
 
 ### Fixed
 - Fixed a breaking bug with command loading that broke the extension when downloaded from Marketplace
 
+
 ## [1.3.1] - 09-01-2022
 
 ### Fixed
 - Fixed README.md dupe command name typo
+
 
 ## [1.3.0] - 09-01-2022
 
@@ -24,7 +32,7 @@ and this project adheres to [Semantic Versioning].
 
 ### Changed
 - Refactored almost all commands to be more readable
-- 
+ 
 
 ## [1.2.0] - 08-01-2022
 
@@ -157,8 +165,9 @@ and this project adheres to [Semantic Versioning].
 [semantic versioning]: https://semver.org/spec/v2.0.0.html
 
 <!-- Versions -->
-[unreleased]: https://github.com/da-the-dev/ExEx/compare/v1.3.2...HEAD
-[1.3.2]: https://github.com/da-the-dev/ExEx/compare/v1.3.0..v1.3.2
+[unreleased]: https://github.com/da-the-dev/ExEx/compare/v1.3.3...HEAD
+[1.3.2]: https://github.com/da-the-dev/ExEx/compare/v1.3.2..v1.3.3
+[1.3.2]: https://github.com/da-the-dev/ExEx/compare/v1.3.1..v1.3.2
 [1.3.1]: https://github.com/da-the-dev/ExEx/compare/v1.3.0..v1.3.1
 [1.3.0]: https://github.com/da-the-dev/ExEx/compare/v1.2.0..v1.3.0
 [1.2.0]: https://github.com/da-the-dev/ExEx/compare/v1.1.4..v1.2.0
