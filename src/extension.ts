@@ -10,6 +10,7 @@ export async function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerCommand(`xx.enableProfile`, async () => (await import('./commands/enableProfile')).cmd.foo(context)),
 		vscode.commands.registerCommand(`xx.mergeProfile`, async () => (await import('./commands/mergeProfile')).cmd.foo(context)),
 		vscode.commands.registerCommand(`xx.renameProfiles`, async () => (await import('./commands/renameProfiles')).cmd.foo(context)),
+		vscode.commands.registerCommand(`xx.menuTest`, async () => (await import('./commands/menuTest')).cmd.foo(context)),
 	)
 }
 

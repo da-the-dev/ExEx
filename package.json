@@ -19,7 +19,8 @@
 		"onCommand:xx.editProfile",
 		"onCommand:xx.renameProfile",
 		"onCommand:xx.duplicateProfile",
-		"onCommand:xx.mergeProfile"
+		"onCommand:xx.mergeProfile",
+		"onCommand:xx.menuTest"
 	],
 	"keywords": [
 		"extension",
@@ -72,6 +73,10 @@
 				"command": "xx.mergeProfile",
 				"title": "ExEx: Merge Profiles",
 				"shortTitle": "Merge Profiles"
+			},
+			{
+				"command": "xx.menuTest",
+				"title": "ExEx: better menu test"
 			}
 		]
 	},
