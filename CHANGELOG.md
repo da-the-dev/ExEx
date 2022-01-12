@@ -166,7 +166,7 @@ and this project adheres to [Semantic Versioning].
 
 <!-- Versions -->
 [unreleased]: https://github.com/da-the-dev/ExEx/compare/v1.3.3...HEAD
-[1.3.2]: https://github.com/da-the-dev/ExEx/compare/v1.3.2..v1.3.3
+[1.3.3]: https://github.com/da-the-dev/ExEx/compare/v1.3.2..v1.3.3
 [1.3.2]: https://github.com/da-the-dev/ExEx/compare/v1.3.1..v1.3.2
 [1.3.1]: https://github.com/da-the-dev/ExEx/compare/v1.3.0..v1.3.1
 [1.3.0]: https://github.com/da-the-dev/ExEx/compare/v1.2.0..v1.3.0
