@@ -1,5 +1,5 @@
 import * as vscode from 'vscode'
-import { readdirSync, readFileSync, readSync } from 'fs'
+import { readdirSync, readFileSync, readSync, existsSync } from 'fs'
 import { homedir } from 'os'
 import { slash } from '../modules/slash'
 import { createUUID } from '../modules/uuid'
@@ -14,7 +14,7 @@ export default class ExtensionService {
      */
     static async fetchExtensions(): Promise<Extension[]> {
         const baseDir = `${homedir()}${slash}.vscode${slash}extensions${slash}`
-        const obsolete = new Set(Object.keys(JSON.parse(readFileSync(`${baseDir}.obsolete`).toString())))
+        const obsolete = existsSync(`${baseDir}.obsolete`) ? new Set(Object.keys(JSON.parse(readFileSync(`${baseDir}.obsolete`).toString()))) : new Set()
         const dir = readdirSync(baseDir)
         const found: Set<string> = new Set()
         return dir
