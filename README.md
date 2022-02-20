@@ -2,7 +2,7 @@
 <span><h4>An extestion for managing extensions.</h4></span>
 <hr>
 
-Have too many extensions? Want to organise all of them? Some may be even confilct with each other? <span style="font-size: 15pt; font-weight: bold;">ExEx</span>  was created exatly to solve these and many more problems. Now with this extestion installed you can separate you extensions into profiles and enable only those you need for a specific workspace.
+Have too many extensions? Want to organise all of them? Some maybe even confilct with each other? <span style="font-size: 15pt; font-weight: bold;">ExEx</span>  was created exatly to solve these and many more problems. Now with this extestion installed you can separate you extensions into profiles and enable only those you need for a specific workspace.
 
 Table of Contents:
 - [ExEx](#exex)
