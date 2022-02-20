@@ -2,7 +2,7 @@
 <span><h4>An extestion for managing extensions.</h4></span>
 <hr>
 
-Have too many extensions? Want to organise all of them? Some maybe even confilct with each other? <span style="font-size: 15pt; font-weight: bold;">ExEx</span>  was created exatly to solve these and many more problems. Now with this extestion installed you can separate you extensions into profiles and enable only those you need for a specific workspace.
+Have too many extensions? Want to organise all of them? Some maybe even be confilcting with each other? <span style="font-size: 15pt; font-weight: bold;">ExEx</span> was created exatly to solve these and many more problems. Now with this extestion installed you can separate your extensions into profiles and enable only those you need for a specific workspace.
 
 Table of Contents:
 - [ExEx](#exex)
@@ -32,7 +32,7 @@ Table of Contents:
 - Rename a profile.
 - Duplicate a profile. Creates a new profile with the same extensions, but a different name. Usefull when a new profile should be created with extra extensions, but the old one must be preserved.
 - Merge profiles. Select multiple profiles to merge into one.
-- **Changes to profiles are automatically applied if changed profiels are enabled**.
+- **Changes to profiles are automatically applied if changed profiles are enabled**.
 
 ## Commands
 - `xx.createProfile` - Create a profile.
@@ -44,13 +44,13 @@ Table of Contents:
 - `xx.mergeProfile` - Merge profiles.
 
 ## Known Issues
-- Some extensions might require reloading the window after the profiles have been applied to activate (like Pylance for example). If some extensions are shown as enabled, but don't work, try reloading the window. It requires more testing. If you can, I'd appreciate if you'd report more issues.
+- Some extensions in some very specific cases might require reloading the window after the profiles have been applied to activate (like Pylance for example). If some extensions are shown as enabled, but don't work, try reloading the window. It requires more testing. If you can, I'd appreciate if you'd report more issues.
 
 ## Future features
-Theese are some of my ideas for the future:
+These are some of my ideas for the future:
 - Syncing with settings
-- Global profile and 'All' profile 
-- Import/export a profile
+- Global profile that is always enabled and 'All' profile that contains all extensions
+- Import/export a profile to a file
   
 If you want, feel free to open a pull request if you want to contribute.
 
