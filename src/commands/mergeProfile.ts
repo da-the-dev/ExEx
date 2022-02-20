@@ -3,11 +3,13 @@ import Command from "../core/interfaces/Command"
 import { Extension } from '../core/interfaces/Extension'
 import Profile from '../core/interfaces/Profile'
 import removeDuplicates from '../core/modules/duplicates'
+import validateWorkspace from '../core/modules/validateWorkspace'
 import ExtensionService from '../core/services/extensionService'
 import ProfileService from '../core/services/profileService'
 import StorageService from '../core/services/storageService'
 const cmd = {
     foo: async ctx => {
+        if (!validateWorkspace(ctx)) return
         const profiles = ProfileService.profiles(ctx)
 
         if (profiles.length <= 0) {

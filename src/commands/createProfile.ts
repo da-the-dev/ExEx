@@ -1,10 +1,12 @@
 import * as vscode from 'vscode'
 import Command from "../core/interfaces/Command"
+import validateWorkspace from '../core/modules/validateWorkspace'
 import ExtensionService from '../core/services/extensionService'
 import ProfileService from '../core/services/profileService'
 import StorageService from '../core/services/storageService'
 const cmd = {
     foo: async ctx => {
+        if (!validateWorkspace(ctx)) return
         const newProfileName = (await vscode.window.showInputBox({
             title: 'Enter the profile\'s name',
             placeHolder: 'Very cool profile XD',

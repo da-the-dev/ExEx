@@ -7,10 +7,22 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
+## [1.3.7] - 20-02-2022
+
+### Fixed
+- Fixed a bug where it was possible to use ExEx commands outside of a workspace.
+
+
+## [1.3.6] - 15-02-2022
+
+### Fixed
+- Added missing binaries.
+
+
 ## [1.3.5] - 06-02-2022
 
 ### Fixed
-- Fixed a bug where the extension would crash when trying to access `.obsolete` that was not there
+- Fixed a bug where the extension would crash when trying to access `.obsolete` that was not there.
 
 
 ## [1.3.4] - 21-01-2022
@@ -177,7 +189,9 @@ and this project adheres to [Semantic Versioning].
 [semantic versioning]: https://semver.org/spec/v2.0.0.html
 
 <!-- Versions -->
-[unreleased]: https://github.com/da-the-dev/ExEx/compare/v1.3.5...HEAD
+[unreleased]: https://github.com/da-the-dev/ExEx/compare/v1.3.7...HEAD
+[1.3.7]: https://github.com/da-the-dev/ExEx/compare/v1.3.6..v1.3.7
+[1.3.6]: https://github.com/da-the-dev/ExEx/compare/v1.3.5..v1.3.6
 [1.3.5]: https://github.com/da-the-dev/ExEx/compare/v1.3.4..v1.3.5
 [1.3.4]: https://github.com/da-the-dev/ExEx/compare/v1.3.3..v1.3.4
 [1.3.3]: https://github.com/da-the-dev/ExEx/compare/v1.3.2..v1.3.3

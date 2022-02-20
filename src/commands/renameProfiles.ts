@@ -1,8 +1,10 @@
 import * as vscode from 'vscode'
 import Command from "../core/interfaces/Command"
+import validateWorkspace from '../core/modules/validateWorkspace'
 import ProfileService from '../core/services/profileService'
 const cmd = {
     foo: async ctx => {
+        if (!validateWorkspace(ctx)) return
         const profiles = ProfileService.profiles(ctx)
 
         if (profiles.length <= 0) {

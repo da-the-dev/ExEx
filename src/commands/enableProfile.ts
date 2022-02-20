@@ -1,10 +1,12 @@
 import * as vscode from 'vscode'
 import Command from "../core/interfaces/Command"
 import Profile from '../core/interfaces/Profile'
+import validateWorkspace from '../core/modules/validateWorkspace'
 import ProfileService from '../core/services/profileService'
 import StorageService from '../core/services/storageService'
 const cmd = {
     foo: async ctx => {
+        if (!validateWorkspace(ctx)) return
         const profiles = ProfileService.profiles(ctx)
 
         const prevEnabledProfiles = StorageService.getWorkspaceKey<string[]>('xx.enabledProfiles', ctx) || []
