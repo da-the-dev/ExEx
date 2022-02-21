@@ -17,6 +17,8 @@ export default class ExtensionService {
         const obsolete = existsSync(`${baseDir}.obsolete`) ? new Set(Object.keys(JSON.parse(readFileSync(`${baseDir}.obsolete`).toString()))) : new Set()
         const dir = readdirSync(baseDir)
         const found: Set<string> = new Set()
+        console.log({ baseDir, obsolete, dir, found })
+
         return dir
             .filter(a => {
                 if (a === '.obsolete' || a === '.DS_Store' || obsolete.has(a))
@@ -40,9 +42,10 @@ export default class ExtensionService {
             .map(e => {                             // Map extensions from a folder
                 const json = JSON.parse(readFileSync(`${baseDir}${e}${slash}package.json`).toString())
 
+                console.log(json.displayName, /(%.*%)/gi.test(json.displayName))
                 return {
                     id: e.split('-').slice(0, -1).join('-'),
-                    name: /(%.*%)/gi.test(json.displayName) ? JSON.parse(readFileSync(`${baseDir}${e}${slash}package.nls.json`).toString())[json.displayName.slice(1, -1)] : json.displayName,
+                    name: /(%.*%)/gi.test(json.displayName ? json.displayName : json.name) ? JSON.parse(readFileSync(`${baseDir}${e}${slash}package.nls.json`).toString())[json.displayName.slice(1, -1)] : json.displayName ? json.displayName : json.name,
                     uuid: json.__metadata?.id
                 } as Extension
             })
