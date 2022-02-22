@@ -44,7 +44,7 @@ Table of Contents:
 - `xx.mergeProfile` - Merge profiles.
 
 ## Known Issues
-- Some extensions in some very specific cases might require reloading the window after the profiles have been applied to activate (like Pylance for example). If some extensions are shown as enabled, but don't work, try reloading the window. It requires more testing. If you can, I'd appreciate if you'd report more issues.
+- Some extensions like jshint do not follow the traditional naming in their package.json, so they might break ExEx. Despite the fixes this issues might still happen for some users, though it is quite rare and inconsistent. Please report any issues with ExEx after installing new extensions.
 
 ## Future features
 These are some of my ideas for the future:
