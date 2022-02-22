@@ -49,16 +49,16 @@ const cmd = {
             qp.totalSteps = totalSteps
             qp.step = 2
             qp.title = 'Select extensions you want in a profile'
+            qp.placeholder = 'Find extensions by name'
             qp.buttons = [vscode.QuickInputButtons.Back]
             qp.canSelectMany = true
-            qp.placeholder = 'Find extensions by name'
             qp.items =
                 extensions.map(e => {
                     return {
                         label: e.name,
                         // description:                 ToDo: add shortened descriptions
                     } as vscode.QuickPickItem
-                })
+                }).filter(e => e.label != "ExEx")
 
             qp.onDidAccept(() => {
                 if (qp.selectedItems.length <= 0) {
@@ -69,6 +69,25 @@ const cmd = {
                 qp.hide()
                 qp.busy = true
                 createProfile(qp.selectedItems.map(i => i.label))
+            })
+            // Reorder items with selected on top (Needs work)
+            qp.onDidChangeSelection(e => {
+                // qp.items = [...qp.items]
+                //     .sort((a, b) => {
+                //         let res = -2
+                //         if (a.picked && !b.picked) res = -1
+                //         if (!a.picked && b.picked) res = 1
+
+                //         if (a.picked && b.picked && a.label < b.label) res = -1
+                //         if (a.picked && b.picked && a.label > b.label) res = 1
+                //         if (a.picked && b.picked && a.label == b.label) res = 0
+
+                //         if (!a.picked && !b.picked && a.label < b.label) res = -1
+                //         if (!a.picked && !b.picked && a.label > b.label) res = 1
+                //         if (!a.picked && !b.picked && a.label == b.label) res = 0
+
+                //         return res
+                //     })
             })
             // Go back a step (re-implement if new buttons are added)
             qp.onDidTriggerButton(e => {
@@ -93,9 +112,9 @@ const cmd = {
             const sqp = vscode.window.createQuickPick()
             sqp.totalSteps = totalSteps
             sqp.step = 3
-            sqp.items = [{ label: 'Enable' }, { label: 'Skip' }]
             sqp.title = 'Enable this profile?'
             sqp.placeholder = 'Confirm enablement'
+            sqp.items = [{ label: 'Enable' }, { label: 'Skip' }]
 
             sqp.onDidAccept(async () => {
                 if (sqp.value === 'Enable' || sqp.selectedItems[0].label === 'Enable') {
