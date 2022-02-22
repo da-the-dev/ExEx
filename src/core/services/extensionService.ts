@@ -42,7 +42,7 @@ export default class ExtensionService {
             .map(e => {                             // Map extensions from a folder
                 const json = JSON.parse(readFileSync(`${baseDir}${e}${slash}package.json`).toString())
 
-                console.log(json.displayName, /(%.*%)/gi.test(json.displayName))
+                // console.log(json.displayName, /(%.*%)/gi.test(json.displayName))
                 return {
                     id: e.split('-').slice(0, -1).join('-'),
                     name: /(%.*%)/gi.test(json.displayName ? json.displayName : json.name) ? JSON.parse(readFileSync(`${baseDir}${e}${slash}package.nls.json`).toString())[json.displayName.slice(1, -1)] : json.displayName ? json.displayName : json.name,
