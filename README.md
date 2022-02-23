@@ -38,7 +38,6 @@ Table of Contents:
 - Duplicate a profile. Creates a new profile with the same extensions, but a different name. Usefull when a new profile should be created with extra extensions, but the old one must be preserved.
 - Merge profiles. Select multiple profiles to merge into one.
 - **Changes to profiles are automatically applied if changed profiles are enabled**.
-
 - Global profile! Add extensions that you use all the time when coding *(like Git History and GitLens, your theme extensions)*. Edit your Global profile (automatically added after the first launch after the update)
 
 ## Commands
