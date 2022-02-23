@@ -22,7 +22,7 @@ and this project adheres to [Semantic Versioning].
 ## [1.3.8] - 22-02-2022
 
 ### Fixed
-- Fixed a bug where extension list could not be loaded properly and would glitch out VSCode if certain extensions were installed
+- Fixed a bug where the extension list could not be loaded properly and would glitch out VSCode if certain extensions were installed
 
 
 ## [1.3.7] - 20-02-2022
@@ -79,7 +79,7 @@ and this project adheres to [Semantic Versioning].
 ## [1.2.0] - 08-01-2022
 
 ### Added
-- Added an ability to dupicate profiles
+- Added ability to duplicate profiles
 
 ### Changed
 - Fixed up refreshing after making changes to enabled profiles
@@ -88,7 +88,7 @@ and this project adheres to [Semantic Versioning].
 ## [1.1.4] - 08-01-2022
 
 ### Changed
-- Made order of elements in menues more convenient
+- Made order of elements in menus more convenient
 
 ## [1.1.3] - 07-01-2022
 
@@ -142,7 +142,7 @@ and this project adheres to [Semantic Versioning].
 ## [1.0.0] - 05-01-2022
 
 ### Added
-- Added nessesary changes for release on VSCode Marketplace.
+- Added necessary changes for release on VSCode Marketplace.
 
 ### Fixed
 - Small bug fixes.
@@ -184,7 +184,7 @@ and this project adheres to [Semantic Versioning].
 
 ### Added
 - Added an ability to create profiles.
-- Added an ablilty to enable 1 profile.
+- Added an ability to enable 1 profile.
 - Added `storageService`, `profileService` and `extensionService`. They take care of their respective components.
 - Added all necessary interfaces.
 - Added comments,
