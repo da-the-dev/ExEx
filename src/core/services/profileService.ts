@@ -83,7 +83,8 @@ export default class ProfileService {
      * @param ctx 
      */
     static async setExtensions(enabledExtensions: Extension[], disabledExtensions: Extension[], ctx: vscode.ExtensionContext) {
-        await StorageService.setDeepWorkspaceKey('extensionsIdentifiers/enabled', enabledExtensions.map(e => new Extension(e.name, e.id, e.uuid).toDeepExtension()), ctx)
+        const updatedEnabledExtensions = enabledExtensions.concat(this.profiles(ctx).find(p => p.name == 'Global')!.enabledExtensions)
+        await StorageService.setDeepWorkspaceKey('extensionsIdentifiers/enabled', updatedEnabledExtensions.map(e => new Extension(e.name, e.id, e.uuid).toDeepExtension()), ctx)
         await StorageService.setDeepWorkspaceKey('extensionsIdentifiers/disabled', disabledExtensions.map(e => new Extension(e.name, e.id, e.uuid).toDeepExtension()), ctx)
         await vscode.commands.executeCommand('workbench.action.reloadWindow')
     }

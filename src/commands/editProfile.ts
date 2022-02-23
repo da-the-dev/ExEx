@@ -68,7 +68,7 @@ const cmd = {
         )
 
         // Auto-reload if edited profile is enabled
-        if (ProfileService.enabledProfiles(ctx).find(p => p.name === editProfileName)) {
+        if (ProfileService.enabledProfiles(ctx).find(p => p.name === editProfileName) || editProfileName === 'Global') {
             await ProfileService.enableProfiles(ProfileService.enabledProfiles(ctx), ctx)
             await vscode.commands.executeCommand('workbench.action.reloadWindow')
         }

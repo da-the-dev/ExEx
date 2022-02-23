@@ -15,7 +15,7 @@ const cmd = {
             enabledProfiles = profiles.filter(p => prevEnabledProfiles.includes(p.name))
 
 
-        const enableProfiles = await vscode.window.showQuickPick(ProfileService.sortedProfiles(ctx, true, true), {
+        const enableProfiles = await vscode.window.showQuickPick(ProfileService.sortedProfiles(ctx, true, true).filter(p => p.label != "Global"), {
             title: 'Select profiles to enable',
             placeHolder: 'Find a profile by name',
             canPickMany: true

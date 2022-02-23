@@ -7,7 +7,20 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
+
+## [1.4.1] - 23-02-2022
+
+### Fixed
+- Fixed a bug where a global profile could be enabled via "Enable profile". Global profile is loaded automatically
+
+## [1.4.0] - 23-02-2022
+
+### Added 
+- Added global profile
+
+
 ## [1.3.8] - 22-02-2022
+
 ### Fixed
 - Fixed a bug where extension list could not be loaded properly and would glitch out VSCode if certain extensions were installed
 
@@ -194,8 +207,10 @@ and this project adheres to [Semantic Versioning].
 [semantic versioning]: https://semver.org/spec/v2.0.0.html
 
 <!-- Versions -->
-[unreleased]: https://github.com/da-the-dev/ExEx/compare/v1.3.8...HEAD
-[1.3.7]: https://github.com/da-the-dev/ExEx/compare/v1.3.7..v1.3.8
+[unreleased]: https://github.com/da-the-dev/ExEx/compare/v1.4.1...HEAD
+[1.4.1]: https://github.com/da-the-dev/ExEx/compare/v1.4.0..v1.4.1
+[1.4.0]: https://github.com/da-the-dev/ExEx/compare/v1.3.8..v1.4.0
+[1.3.8]: https://github.com/da-the-dev/ExEx/compare/v1.3.7..v1.3.8
 [1.3.7]: https://github.com/da-the-dev/ExEx/compare/v1.3.6..v1.3.7
 [1.3.6]: https://github.com/da-the-dev/ExEx/compare/v1.3.5..v1.3.6
 [1.3.5]: https://github.com/da-the-dev/ExEx/compare/v1.3.4..v1.3.5
