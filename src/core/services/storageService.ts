@@ -45,6 +45,21 @@ export default class StorageService {
         return parse ? JSON.parse(value) : value
     }
 
+    /**
+     * Sets value to a key in global storage using VSCode's API.
+     * @param key Key to save to .
+     * @param value Value to save
+     * @param ctx Extension context
+     */
+    static async setDeepGlobalspaceKey(key: string, value: any, ctx: vscode.ExtensionContext): Promise<void> {
+        const path = `${ctx.globalStorageUri?.path.split(slash).slice(0, -1).join(slash).toString()}/state.vscdb`
+        const db = await sqlite.open({
+            filename: path,
+            driver: sqlite3.Database
+        })
+        await db.run('insert or replace into ItemTable (key, value) values (?, ?)', key, JSON.stringify(value))
+    }
+
     /*************************************************************************************/
 
     /**
@@ -104,7 +119,7 @@ export default class StorageService {
     }
 
     /**
-     * Sets value to a key in global storage using VSCode's API.
+     * Sets value to a key in workspace storage using VSCode's API.
      * @param key Key to save to .
      * @param value Value to save
      * @param ctx Extension context

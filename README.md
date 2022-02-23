@@ -2,10 +2,15 @@
 <span><h4>An extestion for managing extensions.</h4></span>
 <hr>
 
+#### Latest features!
+**Brand new!** Global profile! Add extensions that you use all the time when coding *(like Git History and GitLens, your theme extensions)*. Edit your Global profile *(automatically added after the first launch after the update)* and add extensions you want always enabled. They are automatically loaded in when any profile is enabled.
+<hr>
+
 Have too many extensions? Want to organise all of them? Some maybe even be confilcting with each other? <span style="font-size: 15pt; font-weight: bold;">ExEx</span> was created exatly to solve these and many more problems. Now with this extestion installed you can separate your extensions into profiles and enable only those you need for a specific workspace.
 
 Table of Contents:
 - [ExEx](#exex)
+      - [Latest features!](#latest-features)
   - [Important Features](#important-features)
   - [All features](#all-features)
   - [Commands](#commands)
@@ -34,6 +39,8 @@ Table of Contents:
 - Merge profiles. Select multiple profiles to merge into one.
 - **Changes to profiles are automatically applied if changed profiles are enabled**.
 
+- Global profile! Add extensions that you use all the time when coding *(like Git History and GitLens, your theme extensions)*. Edit your Global profile (automatically added after the first launch after the update)
+
 ## Commands
 - `xx.createProfile` - Create a profile.
 - `xx.enableProfile` - Enable profiles *(leave no profiles selected to disable all extensions)*.
@@ -49,7 +56,6 @@ Table of Contents:
 ## Future features
 These are some of my ideas for the future:
 - Syncing with settings
-- Global profile that is always enabled and 'All' profile that contains all extensions
 - Import/export a profile to a file
   
 If you want, feel free to open a pull request if you want to contribute.

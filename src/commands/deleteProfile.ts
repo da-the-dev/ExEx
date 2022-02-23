@@ -14,7 +14,7 @@ const cmd = {
         }
 
         const deleteProfile = await vscode.window.showQuickPick(
-            ProfileService.sortedProfiles(ctx).map(p => p.name), {
+            ProfileService.sortedProfiles(ctx).map(p => p.name).filter(p => p != 'Global'), {
             title: 'Select a profile to delete',
             placeHolder: 'Find a profile by name'
         })
